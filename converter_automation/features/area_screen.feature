@@ -3,20 +3,20 @@ Feature: User is able to convert area units
 
   Background:
     Given I click on Got it button
-@wip
+
   Scenario: User is able to dismiss help
 #    Given I land on Help popup
 #    When I click on Got it button
 #    Then I land on "Area" screen
    Given I land on "Area" screen
 
-
+  @wip
   Scenario: User is able to swap values
-    Given I see "Sq Kilometers" in From header
+    Given I see "Sq Kilometre" in From header
     And I see "Sq Metre" in To header
     When I click on Swap button
     Then I see "Sq Metre" in From header
-    And I see "Sq Kilometers" in To header
+    And I see "Sq Kilometre" in To header
 
 
   Scenario Outline: User is able to convert default units
@@ -26,8 +26,8 @@ Feature: User is able to convert area units
     Examples:
     |target|result|
     |1     |1000000|
- #  |2     |2000000|
- #  |3     |3000000|
+    |2     |2000000|
+    |3     |3000000|
 
   Scenario: User is able to use soft keyboard to enter values
     Given I click on Clear button

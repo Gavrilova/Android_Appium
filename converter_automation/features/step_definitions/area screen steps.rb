@@ -9,26 +9,48 @@ end
 Then(/^I land on "([^"]*)" screen$/) do |value|
   #text("Area")
   actual_value = find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").text
-  puts("I see text #{actual_value}")
+#  puts("I see text #{actual_value}")
   if actual_value != value
     fail("Expected value is #{value}, but actual value was #{actual_value}")
   end
 end
 
 When(/^I click on Swap button$/) do
+    beforeSwap_From_header = find_element(id: "header_text_unit_from").text
+    beforeSwap_To_header = find_element(id: "header_text_unit_to").text
+    puts("beforeSwap_From_header #{beforeSwap_From_header}")
+    puts("beforeSwap_To_header #{beforeSwap_To_header}")
+
+
   find_element(id: "fab").click
+    afterSwap_From_header = find_element(id: "header_text_unit_from").text
+    afterSwap_To_header = find_element(id: "header_text_unit_to").text
+    if afterSwap_From_header != beforeSwap_To_header
+      fail("After swap From header should be #{beforeSwap_To_header}, instead of #{afterSwap_From_header}")
+    end
+    if afterSwap_To_header != beforeSwap_From_header
+      fail("After swap To header should be #{beforeSwap_From_header}, instead of #{afterSwap_To_header}")
+    end
 end
 
 Then(/^I see "([^"]*)" in From header$/) do |value|
   actual_value = find_element(id: "header_text_unit_from").text
-  puts("Expected value is #{value}")
-  puts("Actual value is #{actual_value}")
+#  puts("Expected value is #{value}")
+#  puts("Actual value is #{actual_value}")
+  if actual_value != value
+    fail("Expected value is #{value}, but actual value was #{actual_value}")
+  end
+  puts("Print From")
 end
 
 And(/^I see "([^"]*)" in To header$/) do |value|
   actual_value = find_element(id: "header_text_unit_to").text
-  puts("Expected value is #{value}")
-  puts("Actual value is #{actual_value}")
+#  puts("Expected value is #{value}")
+#  puts("Actual value is #{actual_value}")
+  if actual_value != value
+    fail("Expected value is #{value}, but actual value was #{actual_value}")
+  end
+  puts("Print To")
 end
 
 And(/^I click on Clear button$/) do
