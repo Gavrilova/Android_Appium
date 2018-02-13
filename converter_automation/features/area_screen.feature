@@ -16,7 +16,7 @@ Feature: User is able to convert area units
     Then I see "Sq Metre" in From header
     And I see "Sq Kilometers" in To header
 
-  @wip
+
   Scenario Outline: User is able to convert default units
     Given I click on Clear button
     When I enter "<target>" to From field
@@ -26,3 +26,11 @@ Feature: User is able to convert area units
     |1     |1000000|
  #  |2     |2000000|
  #  |3     |3000000|
+
+  @wip
+  Scenario: User is able to use soft keyboard to enter values
+    Given I click on Clear button
+    When I click on From field
+    And I press "12" on soft keyboad
+    Then I get "12000000" in To field
+

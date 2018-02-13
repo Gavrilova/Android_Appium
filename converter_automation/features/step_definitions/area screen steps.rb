@@ -36,6 +36,19 @@ end
 
 Then(/^I get "([^"]*)" in To field$/) do |value|
   actual_value = find_element(id: "header_value_to").text
-  puts("Expected value is #{value}")
-  puts("Actual value is #{actual_value}")
+  if actual_value != value
+    fail("Expected value is #{value}, but actual value was #{actual_value}")
+  end
+end
+
+When(/^I click on From field$/) do
+  find_element(id: "header_value_from").click
+end
+
+And(/^I press "([^"]*)" on soft keyboad$/) do |value|
+  digits = value.split("")
+  digits.each do |key|
+  digit = Integer(key)
+  press_keycode 7 + digit
+  end
 end
