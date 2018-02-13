@@ -3,11 +3,13 @@ Feature: User is able to convert area units
 
   Background:
     Given I click on Got it button
+@wip
+  Scenario: User is able to dismiss help
+#    Given I land on Help popup
+#    When I click on Got it button
+#    Then I land on "Area" screen
+   Given I land on "Area" screen
 
-# Scenario: User is able to dismiss help
-#   Given I land on Help popup
-#   When I click on Got it button
-#   Then I land on Area screen
 
   Scenario: User is able to swap values
     Given I see "Sq Kilometers" in From header
@@ -33,7 +35,7 @@ Feature: User is able to convert area units
     And I press "12" on soft keyboad
     Then I get "12000000" in To field
 
-  @wip
+
   Scenario:
     When I select "Hectare" from left column
     Then I see "Hectare" in From header

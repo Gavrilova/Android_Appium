@@ -1,4 +1,4 @@
-Given(/^I land on help popup$/) do
+Given(/^I land on Help popup$/) do
   text("Help")
 end
 
@@ -6,8 +6,13 @@ When(/^I click on Got it button$/) do
   find_element(id: "button1").click
 end
 
-Then(/^I land on Area screen$/) do
-  text("Area")
+Then(/^I land on "([^"]*)" screen$/) do |value|
+  #text("Area")
+  actual_value = find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").text
+  puts("I see text #{actual_value}")
+  if actual_value != value
+    fail("Expected value is #{value}, but actual value was #{actual_value}")
+  end
 end
 
 When(/^I click on Swap button$/) do
