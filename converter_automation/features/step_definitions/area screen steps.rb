@@ -40,7 +40,6 @@ Then(/^I see "([^"]*)" in From header$/) do |value|
   if actual_value != value
     fail("Expected value is #{value}, but actual value was #{actual_value}")
   end
-  puts("Print From")
 end
 
 And(/^I see "([^"]*)" in To header$/) do |value|
@@ -50,7 +49,6 @@ And(/^I see "([^"]*)" in To header$/) do |value|
   if actual_value != value
     fail("Expected value is #{value}, but actual value was #{actual_value}")
   end
-  puts("Print To")
 end
 
 And(/^I click on Clear button$/) do
@@ -100,5 +98,18 @@ And(/^I press "([^"]*)" on soft keyboad$/) do |value|
 end
 
 When(/^I select "([^"]*)" from left column$/) do |value|
+  #make sure that we have checked Sq Metre radio button in the right column
+  if find_element(id: "header_text_unit_to").text != "Sq Metre"
+    find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='Sq Metre']").click
+  end
+  #make sure that header_value_from = "1.0" to expect "10000" after clicking to the Hectare in the left column
+  if find_element(id: "header_value_from").text !="1.0"
+    fail("Value in the header_value_to will not be 10000")
+  end
+
   find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{value}']").click
+   #make sure that "Hectare" radio buton in left column checked
+  if find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{value}']").attribute("checked") != "true"
+    fail("Hectare radio button from left column doesn't checked!")
+  end
 end

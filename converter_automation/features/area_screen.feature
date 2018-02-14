@@ -29,7 +29,7 @@ Feature: User is able to convert area units
     |2     |2000000|
     |3     |3000000|
 
-  @wip
+
   Scenario: User is able to use soft keyboard to enter values
     Given I click on Clear button
     When I click on From field
@@ -37,8 +37,8 @@ Feature: User is able to convert area units
     Then I get "12000000" in To field
 
 
-  Scenario:
-    When I select "Hectare" from left column
+  Scenario: User is able to select Hectare radio button in the left column
+    Given I select "Hectare" from left column
     Then I see "Hectare" in From header
     And I get "10000" in To field
 
