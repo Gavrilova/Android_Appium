@@ -8,9 +8,9 @@ end
 
 Then(/^I land on "([^"]*)" screen$/) do |value|
   if (find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").displayed? == true)
-    puts("Area text is present on current screen")
+    puts("#{value} text is present on current screen")
   else
-    fail("Area text is absent on current screen!")
+    fail("#{value} text is absent on current screen!")
   end
 end
 
