@@ -1,7 +1,0 @@
-# file to create profile
-area: -t @area
-volume: -t @volume
-wip: -t @wip
-
-any: -t @area, @volume, @wip
-wip_area: -t @wip -t @area --format html --out report.html --format pretty
