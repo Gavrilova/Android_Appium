@@ -19,6 +19,9 @@ end
 
 
 And(/^I ground on Area screen$/) do
-  text("Area")
-  #actual_value = find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='Area']").text
+  if (find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='Area']").displayed? == true)
+    puts("Area text is present on current screen")
+  else
+    fail("Area text is absent on current screen!")
+  end
 end
