@@ -9,7 +9,6 @@ Feature:User is able to convert Volume units
     When I swipe in the menu
     Then I see app menu
 
-  @wip
   Scenario Outline:
     When I swipe in the menu
     And I select "<target>" from menu
