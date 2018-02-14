@@ -54,7 +54,21 @@ And(/^I see "([^"]*)" in To header$/) do |value|
 end
 
 And(/^I click on Clear button$/) do
-  find_element(id: "menu_clear").click
+  #we need to assert that there is no text in header_value_from field
+  value_From = find_element(id: "header_value_from").text
+    if value_From != nil
+      find_element(id: "menu_clear").click
+    end
+  #assert that header_value_From field is empty and header_value_To is "0"
+  after_value_From = find_element(id: "header_value_from").text
+  after_value_To = find_element(id: "header_value_to").text
+  if after_value_From != ""
+    fail("header_value_From field doesn't clear after tapping Clear button")
+  end
+  if after_value_To != "0"
+    fail("header_value_To field doesn't contain 0 after tapping Clear button")
+  end
+
 end
 
 When(/^I enter "([^"]*)" to From field$/) do |value|
