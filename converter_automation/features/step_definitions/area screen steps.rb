@@ -7,11 +7,10 @@ When(/^I click on Got it button$/) do
 end
 
 Then(/^I land on "([^"]*)" screen$/) do |value|
-  #text("Area")
-  actual_value = find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").text
-#  puts("I see text #{actual_value}")
-  if actual_value != value
-    fail("Expected value is #{value}, but actual value was #{actual_value}")
+  if (find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").displayed? == true)
+    puts("Area text is present on current screen")
+  else
+    fail("Area text is absent on current screen!")
   end
 end
 
