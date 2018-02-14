@@ -87,10 +87,15 @@ When(/^I click on From field$/) do
 end
 
 And(/^I press "([^"]*)" on soft keyboad$/) do |value|
+  initial_value = value
   digits = value.split("")
   digits.each do |key|
   digit = Integer(key)
   press_keycode 7 + digit
+  end
+  header_value_from = find_element(id: "header_value_from").text
+  if header_value_from != initial_value
+    fail("Inputted value #{header_value_from} doesn't match initial value #{initial_value}")
   end
 end
 
