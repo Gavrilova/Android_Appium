@@ -8,7 +8,6 @@ end
 
 Then(/^I land on "([^"]*)" screen$/) do |value|
   if (find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").displayed? == true)
-    puts("#{value} text is present on current screen")
   else
     fail("#{value} text is absent on current screen!")
   end
@@ -17,9 +16,6 @@ end
 When(/^I click on Swap button$/) do
     beforeSwap_From_header = find_element(id: "header_text_unit_from").text
     beforeSwap_To_header = find_element(id: "header_text_unit_to").text
-    puts("beforeSwap_From_header #{beforeSwap_From_header}")
-    puts("beforeSwap_To_header #{beforeSwap_To_header}")
-
 
   find_element(id: "fab").click
     afterSwap_From_header = find_element(id: "header_text_unit_from").text
@@ -34,8 +30,7 @@ end
 
 Then(/^I see "([^"]*)" in From header$/) do |value|
   actual_value = find_element(id: "header_text_unit_from").text
-#  puts("Expected value is #{value}")
-#  puts("Actual value is #{actual_value}")
+
   if actual_value != value
     fail("Expected value is #{value}, but actual value was #{actual_value}")
   end
@@ -43,8 +38,7 @@ end
 
 And(/^I see "([^"]*)" in To header$/) do |value|
   actual_value = find_element(id: "header_text_unit_to").text
-#  puts("Expected value is #{value}")
-#  puts("Actual value is #{actual_value}")
+
   if actual_value != value
     fail("Expected value is #{value}, but actual value was #{actual_value}")
   end
