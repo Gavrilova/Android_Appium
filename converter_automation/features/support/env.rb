@@ -36,16 +36,16 @@ def select_radio_button(elem)
   current_screen = get_source
   previous_screen = ""
 
-  until (exists {elem}) || (previous_screen == current_screen) do
+  until (exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}) || (previous_screen == current_screen) do
     Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, end_x: 0.5, end_y: 0.2, duration: 500).perform
     previous_screen = current_screen
     current_screen = get_source
   end
 
-  if exists elem
-    elem.click
+  if exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}
+    find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']").click
   else
-    raise("Radio button #{elem.text} was not found in menu")
+    raise("Radio button #{elem} was not found in menu")
   end
 end
 
