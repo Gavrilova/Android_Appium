@@ -32,7 +32,7 @@ def select_menu_item(value)
   end
 end
 
-def select_radio_button(elem)
+def swipe_down(elem)
   current_screen = get_source
   previous_screen = ""
 
@@ -44,10 +44,79 @@ def select_radio_button(elem)
 
   if exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}
     find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']").click
+    result = true
   else
-    raise("Radio button #{elem} was not found in menu")
+    result = false
+    puts("Element wasn't found after swiping down")
+  end
+  return result
+end
+
+def swipe_up(elem)
+  current_screen = get_source
+  previous_screen = ""
+
+  until (exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}) || (previous_screen == current_screen) do
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.2, end_x: 0.5, end_y: 0.8, duration: 500).perform
+    previous_screen = current_screen
+    current_screen = get_source
+  end
+
+  if exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}
+    find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']").click
+    result = true
+  else
+    result = false
+    puts("Element wasn't found after swiping up")
+  end
+  return result
+end
+
+
+def select_radio_button(elem)
+  value_down = swipe_down(elem)
+  if value_down == "false"
+    swipe_up(elem)
+    value_up = swipe_up(elem)
+  else
+
+    if value_up == false
+      raise ("Element wasn't found in right column!")
+    end
   end
 end
+
+
+def counts_right_column_radio_buttons()
+  current_screen = get_source
+  previous_screen = ""
+  elements = []
+  array = find_element(id: "radio_group_to").find_elements(:class, "android.widget.RadioButton")
+  array.each do |v|
+    elements.push(v.text)
+  end
+  puts("Elements before swipe:")
+   elements.each do |b|
+    puts(b)
+   end
+
+  until (exists {find_element(id: "radio_group_to")
+                     .find_element(xpath: "//android.widget.RadioButton[@text='Acre']")}) || (previous_screen == current_screen) do
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.8, end_x: 0.5, end_y: 0.2, duration: 500).perform
+    previous_screen = current_screen
+    current_screen = get_source
+    arr = find_element(id: "radio_group_to").find_elements(:class, "android.widget.RadioButton")
+    arr.each do |v|
+      elements.push(v.text)
+    end
+  end
+   puts ("elements after swipe")
+   elements.each do |b|
+     puts(b)
+   end
+  return elements.uniq
+end
+
 
 def convertion()
   header_to = find_element(id: "header_text_unit_to").text

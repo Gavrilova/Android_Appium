@@ -7,17 +7,18 @@ end
 
 Then(/^I find index checked radio button$/) do
 
-  # header_To_text = find_element(id: "header_text_unit_to").text
-  buttons = find_element(id: "radio_group_to").find_elements(class: "android.widget.RadioButton")
-  buttons_after_click = buttons
-  #puts("buttons_after_click.length = #{buttons_after_click.length}")
-  buttons_after_click.delete_at(1)
+  column_to = counts_right_column_radio_buttons()
+  puts("counts_right_column_radio_buttons() :")
 
+  column_to.delete_at(1)
+  column_to.each do |v|
+    puts v
+  end
   8.times {
-    i = rand(buttons_after_click.length)
-    #puts("i = #{i}")
-    elem = buttons_after_click.at(i).text
-    # puts("buttons_after_click.at(i).text = #{elem}")
+    i = rand(column_to.length-1)
+    puts("i = #{i}")
+    elem = column_to[i]
+    puts("column_to.index(i) = #{elem}")
     select_radio_button(elem)
     puts(find_element(id: "header_text_unit_to").text)
     if find_element(id: "header_text_unit_to").text == ""
@@ -26,7 +27,7 @@ Then(/^I find index checked radio button$/) do
 
     convertion
 
-    buttons_after_click.delete_at(i)
+    column_to.delete_at(i)
   }
 end
 
