@@ -7,10 +7,7 @@ When(/^I click on Got it button$/) do
 end
 
 Then(/^I land on "([^"]*)" screen$/) do |value|
-  if (find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").displayed? == true)
-  else
-    fail("#{value} text is absent on current screen!")
-  end
+  fail("#{value} text is absent on current screen!") unless find_element(id: "toolbar").find_element(xpath: "//android.widget.TextView[@text='#{value}']").displayed?
 end
 
 When(/^I click on Swap button$/) do
