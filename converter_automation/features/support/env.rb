@@ -53,8 +53,8 @@ def swipe_down(elem)
   previous_screen = ""
 
   until (exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}) || (previous_screen == current_screen) do
-  Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.9, offset_x: 0.5, offset_y: 0.5, duration: 500).perform
-   # puts("I'm swiping down")
+    Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.9, offset_x: 0.5, offset_y: 0.5, duration: 500).perform
+    # puts("I'm swiping down")
     previous_screen = current_screen
     current_screen = get_source
   end
@@ -96,7 +96,7 @@ end
 
 def select_radio_button(elem)
   value_down = swipe_down(elem)
- # puts("value_down #{value_down}")
+  # puts("value_down #{value_down}")
   if !(value_down)
 #    puts("trying to reach by swiping up" + elem)
     value_up = swipe_up(elem)

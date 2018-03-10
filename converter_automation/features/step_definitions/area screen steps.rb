@@ -11,18 +11,18 @@ Then(/^I land on "([^"]*)" screen$/) do |value|
 end
 
 When(/^I click on Swap button$/) do
-    beforeSwap_From_header = find_element(id: "header_text_unit_from").text
-    beforeSwap_To_header = find_element(id: "header_text_unit_to").text
+  beforeSwap_From_header = find_element(id: "header_text_unit_from").text
+  beforeSwap_To_header = find_element(id: "header_text_unit_to").text
 
   find_element(id: "fab").click
-    afterSwap_From_header = find_element(id: "header_text_unit_from").text
-    afterSwap_To_header = find_element(id: "header_text_unit_to").text
-    if afterSwap_From_header != beforeSwap_To_header
-      fail("After swap From header should be #{beforeSwap_To_header}, instead of #{afterSwap_From_header}")
-    end
-    if afterSwap_To_header != beforeSwap_From_header
-      fail("After swap To header should be #{beforeSwap_From_header}, instead of #{afterSwap_To_header}")
-    end
+  afterSwap_From_header = find_element(id: "header_text_unit_from").text
+  afterSwap_To_header = find_element(id: "header_text_unit_to").text
+  if afterSwap_From_header != beforeSwap_To_header
+    fail("After swap From header should be #{beforeSwap_To_header}, instead of #{afterSwap_From_header}")
+  end
+  if afterSwap_To_header != beforeSwap_From_header
+    fail("After swap To header should be #{beforeSwap_From_header}, instead of #{afterSwap_To_header}")
+  end
 end
 
 Then(/^I see "([^"]*)" in From header$/) do |value|
@@ -44,9 +44,9 @@ end
 And(/^I click on Clear button$/) do
   #we need to assert that there is no text in header_value_from field
   value_From = find_element(id: "header_value_from").text
-    if value_From != nil
-      find_element(id: "menu_clear").click
-    end
+  if value_From != nil
+    find_element(id: "menu_clear").click
+  end
   #assert that header_value_From field is empty and header_value_To is "0"
   after_value_From = find_element(id: "header_value_from").text
   after_value_To = find_element(id: "header_value_to").text
@@ -78,8 +78,8 @@ And(/^I press "([^"]*)" on soft keyboad$/) do |value|
   initial_value = value
   digits = value.split("")
   digits.each do |key|
-  digit = Integer(key)
-  press_keycode 7 + digit
+    digit = Integer(key)
+    press_keycode 7 + digit
   end
   header_value_from = find_element(id: "header_value_from").text
   if header_value_from != initial_value
@@ -93,12 +93,12 @@ When(/^I select "([^"]*)" from left column$/) do |value|
     find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='Sq Metre']").click
   end
   #make sure that header_value_from = "1.0" to expect "10000" after clicking to the Hectare in the left column
-  if find_element(id: "header_value_from").text !="1.0"
+  if find_element(id: "header_value_from").text != "1.0"
     fail("Value in the header_value_to will not be 10000")
   end
 
   find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{value}']").click
-   #make sure that "Hectare" radio buton in left column checked
+  #make sure that "Hectare" radio buton in left column checked
   if find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{value}']").attribute("checked") != "true"
     fail("Hectare radio button from left column doesn't checked!")
   end

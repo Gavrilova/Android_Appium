@@ -8,7 +8,7 @@ Feature: User is able to convert area units
 #    Given I land on Help popup
 #    When I click on Got it button
 #    Then I land on "Area" screen
-   Given I land on "Area" screen
+    Given I land on "Area" screen
 
 #@wip
   Scenario: User is able to swap values
@@ -24,10 +24,10 @@ Feature: User is able to convert area units
     When I enter "<target>" to From field
     Then I get "<result>" in To field
     Examples:
-    |target|result|
-    |1     |1000000|
-    |2     |2000000|
-    |3     |3000000|
+      | target | result  |
+      | 1      | 1000000 |
+      | 2      | 2000000 |
+      | 3      | 3000000 |
 
 
   Scenario: User is able to use soft keyboard to enter values
