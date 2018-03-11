@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="79330205-549f-4390-978f-de75feb610a0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb" afterPath="$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb" />
-      <change beforePath="$PROJECT_DIR$/features/step_definitions/volume_screen_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/volume_screen_steps.rb" />
-      <change beforePath="$PROJECT_DIR$/features/support/env.rb" afterPath="$PROJECT_DIR$/features/support/env.rb" />
       <change beforePath="$PROJECT_DIR$/report.html" afterPath="$PROJECT_DIR$/report.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="radio_group_to.rb.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+            <state relative-caret-position="280">
+              <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -130,8 +128,8 @@
         <option value="$PROJECT_DIR$/features/area_screen.feature" />
         <option value="$PROJECT_DIR$/features/radio_group_to.feature" />
         <option value="$PROJECT_DIR$/features/support/env.rb" />
-        <option value="$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb" />
         <option value="$PROJECT_DIR$/features/step_definitions/volume_screen_steps.rb" />
+        <option value="$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb" />
       </list>
     </option>
   </component>
@@ -272,12 +270,12 @@
       <workItem from="1520304727065" duration="3339000" />
       <workItem from="1520393296108" duration="909000" />
       <workItem from="1520434441023" duration="885000" />
-      <workItem from="1520638245125" duration="20394000" />
+      <workItem from="1520638245125" duration="20710000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191527000" />
+    <option name="totallyTimeSpent" value="191843000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -712,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/step_definitions/radio_group_to.rb.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+        <state relative-caret-position="280">
+          <caret line="56" column="5" lean-forward="true" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
           <folding />
         </state>
       </provider>

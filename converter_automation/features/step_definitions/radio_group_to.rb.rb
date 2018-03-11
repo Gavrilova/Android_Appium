@@ -24,7 +24,7 @@ Then(/^I find index checked radio button$/) do
 
   column_to.delete_at(1)
   header_value_to.delete_at(1)
-  8.times {
+  3.times {
 
     i = rand(column_to.length - 1)
     elem_text = column_to[i]
