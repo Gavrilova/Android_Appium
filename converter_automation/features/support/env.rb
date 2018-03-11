@@ -136,10 +136,14 @@ def counts_right_column_radio_buttons()
 end
 
 
-def conversion()
-  header_to = find_element(id: "header_text_unit_to").text
+def conversion(elem_value)
+  if find_element(id: "header_text_unit_to").text == ""
+    raise("There is no results after conversions!")
+  end
+#  header_to = find_element(id: "header_text_unit_to").text
   value_from = find_element(id: "header_value_from").text
-  sq_km = value_from.to_f
+#  sq_km = value_from.to_f
+=begin
   mt = Math.sqrt(sq_km) * 1000
 
   result = 0
@@ -177,10 +181,17 @@ def conversion()
   if header_to == "Sq Kilometre"
     result = 1
   end
+=end
   value_to = (find_element(id: "header_value_to").text).to_f
-  result_sprintf = sprintf("%.4f", result).to_f
-  if value_to != result_sprintf
+#  result_sprintf = sprintf("%.4f", result).to_f
+  if value_to != elem_value
+    result = false
+ #   puts("value_to = #{value_to}")
+ #   puts("elem_value = #{elem_value}")
+ #   puts(find_element(id: "header_text_unit_to").text)
     raise("Conversion result is wrong!")
+  else
+    result = true
   end
   return result
 end
