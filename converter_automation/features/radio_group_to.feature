@@ -10,7 +10,4 @@
       Scenario:
         Then I see text in To header
         Then I find index checked radio button
-  #      Then I select the next one radio button in the next column
-  #      And I see "<string>" in To header
-
 

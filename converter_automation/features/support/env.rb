@@ -64,7 +64,7 @@ def swipe_down(elem)
     result = true
   else
     result = false
-    puts("Element wasn't found after swiping down")
+    puts("Element wasn't found after swiping down. It's needed to swipe up.")
   end
   return result
 end
@@ -72,9 +72,6 @@ end
 def swipe_up(elem)
   current_screen = get_source
   previous_screen = ""
-  if (exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")})
-#    puts("Element is here! ")
-  end
 
   until (exists {find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']")}) || (previous_screen == current_screen) do
     Appium::TouchAction.new.swipe(start_x: 0.5, start_y: 0.5, offset_x: 0.5, offset_y: 0.9, duration: 500).perform
@@ -88,7 +85,7 @@ def swipe_up(elem)
     result = true
   else
     result = false
-    puts("Element wasn't found after swiping up")
+    puts("Element wasn't found after swiping up. It's needed to swipe down.")
   end
   return result
 end
@@ -96,13 +93,9 @@ end
 
 def select_radio_button(elem)
   value_down = swipe_down(elem)
-  # puts("value_down #{value_down}")
-  if !(value_down)
-#    puts("trying to reach by swiping up" + elem)
-    value_up = swipe_up(elem)
-#    puts("value up: #{value_up}")
-#    (puts "header_text_unit_to : #{find_element(id: "header_text_unit_to").text}")
 
+  if !(value_down)
+    value_up = swipe_up(elem)
   else
     if value_up == false
       raise ("Element wasn't found in right column!")
@@ -137,61 +130,12 @@ end
 
 
 def conversion(elem_value)
-  if find_element(id: "header_text_unit_to").text == ""
+  if find_element(id: "header_value_to").text == ""
     raise("There is no results after conversions!")
   end
-#  header_to = find_element(id: "header_text_unit_to").text
-  value_from = find_element(id: "header_value_from").text
-#  sq_km = value_from.to_f
-=begin
-  mt = Math.sqrt(sq_km) * 1000
-
-  result = 0
-  if header_to == "Sq Metre"
-    result = (mt) ** 2
-  end
-  if header_to == "Sq Centimetre"
-    result = (mt * 100) ** 2
-  end
-
-  if header_to == "Hectare"
-    result = (sq_km * 100)
-  end
-
-  if header_to == "Sq Mile"
-    result = sq_km * ((100 * 1000) / (1760 * 36 * 2.54)) ** 2
-  end
-
-  if header_to == "Sq Yard"
-    result = sq_km * (1000 * 100 / (36 * 2.54)) ** 2
-  end
-
-  if header_to == "Sq Foot"
-    result = sq_km * (1000 * 100 / (12 * 2.54)) ** 2
-  end
-
-  if header_to == "Sq Inch"
-    result = sq_km * ((1000 * 100 / 2.54) ** 2)
-
-  end
-
-  if header_to == "Acre"
-    result = sq_km * (((100 * 1000) / (36 * 2.54)) ** 2) / 4840
-  end
-  if header_to == "Sq Kilometre"
-    result = 1
-  end
-=end
   value_to = (find_element(id: "header_value_to").text).to_f
-#  result_sprintf = sprintf("%.4f", result).to_f
+
   if value_to != elem_value
-    result = false
- #   puts("value_to = #{value_to}")
- #   puts("elem_value = #{elem_value}")
- #   puts(find_element(id: "header_text_unit_to").text)
     raise("Conversion result is wrong!")
-  else
-    result = true
   end
-  return result
 end
