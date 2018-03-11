@@ -101,6 +101,10 @@ def select_radio_button(elem)
       raise ("Element wasn't found in right column!")
     end
   end
+  #assert that we checked exact elem radio button in right column
+  if find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{elem}']").attribute("checked") != "true"
+    raise("#{elem} wasn't checked!")
+  end
 end
 
 
