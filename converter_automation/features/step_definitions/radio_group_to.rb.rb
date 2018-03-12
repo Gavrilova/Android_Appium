@@ -1,15 +1,3 @@
-And(/^I see "([^"]*)" in the From text field$/) do |value|
-  if find_element(id: "header_value_from").text != "#{value}"
-    raise("#{value} in the From field is differ than 1.0 ")
-  end
-
-  #assert that default checked radio button in left column From is "Sq Kilometre"
-  if find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='Sq Kilometre']").attribute("checked") != "true"
-    raise("Sq Kilometre is not default checked radio button!")
-  end
-end
-
-
 Then(/^I find index checked radio button$/) do
 
   column_to = counts_right_column_radio_buttons()

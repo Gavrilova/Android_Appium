@@ -4,6 +4,7 @@ Feature: User is able verify conversion results
   Background:
     Given I click on Got it button
     And I ground on Area screen
+    And I see checked "Sq Kilometre" radio button in From column
     And I see "1.0" in the From text field
 
   @wip
