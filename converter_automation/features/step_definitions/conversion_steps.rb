@@ -1,6 +1,6 @@
 And(/^I see checked "([^"]*)" radio button in From column$/) do |string|
 
-  #assert that checked radio button in left column From is "string"
+  #assert that checked radio button in left column From is "#{string}"
   if find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{string}']").attribute("checked") != "true"
     raise("#{string} is not checked radio button!")
   end
