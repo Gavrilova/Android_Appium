@@ -15,7 +15,7 @@ Feature: User is able verify conversion results
     And I see "<result>" in header_value_to field
 
     Examples:
-      | target          | result         |
-      | Sq Centimetre   | 10000000000    |
-      | Hectare         | 100            |
-      | Acre            | 247.1054       |
+      | target        | result      |
+      | Sq Centimetre | 10000000000 |
+      | Hectare       | 100         |
+      | Acre          | 247.1054    |

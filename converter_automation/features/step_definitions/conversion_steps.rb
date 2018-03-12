@@ -1,5 +1,4 @@
 And(/^I see checked "([^"]*)" radio button in From column$/) do |string|
-
   #assert that checked radio button in left column From is "#{string}"
   if find_element(id: "radio_group_from").find_element(xpath: "//android.widget.RadioButton[@text='#{string}']").attribute("checked") != "true"
     raise("#{string} is not checked radio button!")
@@ -7,24 +6,21 @@ And(/^I see checked "([^"]*)" radio button in From column$/) do |string|
 end
 
 
-And(/^I see "([^"]*)" in the From text field$/) do |value|
-  if find_element(id: "header_value_from").text != "#{value}"
-    raise("#{value} in the From field is differ than 1.0 ")
+And(/^I see "([^"]*)" in the From text field$/) do |string|
+  if find_element(id: "header_value_from").text != "#{string}"
+    raise("#{string} in the From field is differ than 1.0 ")
   end
 end
 
 
 When (/^I see "([^"]*)" default checked in To column$/) do |string|
-
   if find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{string}']").attribute("checked") == "false"
-    raise("#{value} is not default checked button!")
+    raise("#{string} is not default checked button!")
   end
-
 end
 
 
 Then (/^I select "([^"]*)" radio button in To column$/) do |string|
-
 
   current_screen = get_source
   previous_screen = ""
@@ -40,7 +36,6 @@ Then (/^I select "([^"]*)" radio button in To column$/) do |string|
   else
     raise("#{string} wasn't fround in To column!")
   end
-
 
   #assert that we checked exact elem radio button in right column
   if find_element(id: "radio_group_to").find_element(xpath: "//android.widget.RadioButton[@text='#{string}']").attribute("checked") != "true"
